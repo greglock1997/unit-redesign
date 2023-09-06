@@ -20,7 +20,7 @@ function Question1() {
     };
 
     return (
-        <div className={unitRedesignStyles['page-6']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 1</h1>
             <p>
                 Imagine a customer has been with us for 91 days and our current standing charge is
@@ -57,7 +57,7 @@ function Question2() {
     }
 
     return (
-        <div className={unitRedesignStyles['page-7']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-multiple-answer']}`}>
             <h1>Question 2</h1>
             <p>Which of these is a common unit for energy usage?</p>
             <button
@@ -123,7 +123,7 @@ function Question3() {
     };
 
     return (
-        <div className={unitRedesignStyles['page-9']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 3</h1>
             <p>
                 In this scenario the customer has been receiving their energy from this supplier
@@ -170,7 +170,7 @@ function Question4() {
     };
 
     return (
-        <div className={unitRedesignStyles['page-10']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 4</h1>
             <p>
                 This customer has also been receiving energy from their supplier for one year. They have
@@ -216,7 +216,7 @@ function Question5() {
     };
 
     return (
-        <div className={unitRedesignStyles['page-11']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 5</h1>
             <p>
                 This time, a customer has been receiving energy from their supplier for 239 days.
@@ -254,7 +254,7 @@ function Question6() {
     }
 
     return (
-        <div className={unitRedesignStyles['page-15']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-multiple-answer']}`}>
             <h1>Question 6</h1>
             <p>Which of these does the acronym <i>EAC</i> stand for?</p>
             <button
@@ -320,7 +320,7 @@ function Question7() {
     };
 
     return (
-        <div className={unitRedesignStyles['page-16']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 7</h1>
             <p>
                 Below is a table showing a customer's electricity usage from
@@ -378,7 +378,7 @@ function Question8() {
     }
 
     return (
-        <div className={unitRedesignStyles['page-15']}>
+        <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-multiple-answer']}`}>
             <h1>Question 8</h1>
             <p>
                 According to OFGEM, what is the annual energy consumption
@@ -428,15 +428,46 @@ function Question8() {
     )
 }
 
+function ProgressBar({pageNumber, pages}) {
+    const completionPercentage = ((pageNumber + 1) / pages.length) * 100;
+
+    const progressBarStyle = {
+        width: `${completionPercentage}%`
+    }
+
+    useEffect(() => {
+        console.log('completionPercentage : ', completionPercentage)
+    }, [completionPercentage])
+
+    return (
+        <div className={unitRedesignStyles['unit-progress-bar-container']}>
+            <div 
+                className={unitRedesignStyles['unit-progress-bar']}
+                style={progressBarStyle}    
+            >
+            </div>
+        </div>
+    )
+}
+
 // Page Component
 
 export default function UnitRedesign() {
     const [pageNumber, setPageNumber] = useState(0);
     const [dashboardPageNumber, setDashboardPageNumber] = useState(0);
 
+    const [completedPages, setCompletedPages] = useState([]);
+
+    const handlePageCompletion = (pageId) => {
+        if (!completedPages.includes(pageId)) {
+            setCompletedPages([...completedPages, pageId]);
+        }
+        console.log(completedPages);
+    }
+
     const pages = [
         (
-            <div className={unitRedesignStyles['page-1']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>Focus Points</h1>
                 <ul>
                     <li>Introduction to energy bills</li>
@@ -450,7 +481,7 @@ export default function UnitRedesign() {
             </div>
         ),
         (   
-            <div className={unitRedesignStyles['page-3']}>
+            <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
                 <div>
                     <h1>Calculating an energy bill</h1>
                     <p>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
@@ -466,7 +497,7 @@ export default function UnitRedesign() {
             </div>
         ),
         (
-            <div className={unitRedesignStyles['page-4']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>Unit rate</h1>
                 <p>The <b>unit rate</b> is the price-per-unit of the gas and electricity you consume in your household. For exmaple, electricity is measured in
                 kilowatt hours (kWh), so a unit rate would be the cost per kWh used. Unit rates can vary depending on several reasons : </p>
@@ -481,7 +512,7 @@ export default function UnitRedesign() {
             </div>
         ),
         (
-            <div className={unitRedesignStyles['page-5']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>Standing charge</h1>
                 <p>A <b>standing charge</b> is a fixed daily amount that you must pay no matter how much energy you use.
                 It even applies to properties that are empty for part of the year, like a holiday home. The charge coverd the cost
@@ -510,7 +541,7 @@ export default function UnitRedesign() {
             <Question2 />
         ),
         (
-            <div className={unitRedesignStyles['page-8']}>
+            <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
                 <div>
                     <h1>Measure of gas and electricity units</h1>
                     <p>
@@ -550,7 +581,7 @@ export default function UnitRedesign() {
             <Question5 />
         ),
         (
-            <div className={unitRedesignStyles['page-12']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>How electricity usage is calculated</h1>
                 <p>
                     Electricity usage is calculated from either <b>actual</b> meter readings
@@ -585,7 +616,7 @@ export default function UnitRedesign() {
             </div>            
         ),
         (
-            <div className={unitRedesignStyles['page-13']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>How gas usage is calculated</h1>
                 <p>
                     Gas usage is calculated from either <b>actual</b> meter readings
@@ -628,7 +659,7 @@ export default function UnitRedesign() {
             </div>            
         ),
         (
-            <div className={unitRedesignStyles['page-14']}>
+            <div className={unitRedesignStyles['page']}>
                 <h1>Estimated Meter Reads</h1>
                 <p>
                     <b>How is an estimated meter reading calculated?</b>
@@ -704,10 +735,14 @@ export default function UnitRedesign() {
                         {pageNumber < (pages.length - 1) && (
                             <button 
                                 className={unitRedesignStyles['unit-main-page-right-button']}
-                                onClick={nextPage}
+                                onClick={() => {
+                                    handlePageCompletion(pageNumber);
+                                    nextPage();
+                                }}
                             >&#62;</button>
                         )}
                     </div>
+                    <ProgressBar pageNumber={pageNumber} pages={pages}/>
                     <div className={unitRedesignStyles['unit-main-column-1-dashboard']}>
                         <div className={unitRedesignStyles['unit-main-column-1-dashboard-header']}>
                             <h3>Overview</h3>
