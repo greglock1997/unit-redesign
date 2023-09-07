@@ -85,8 +85,28 @@
     border-bottom: 1px solid #D1D7DC;
 }
 
+.unit-main-column-1-dashboard div {
+    display: flex;
+    padding: 20px;
+    width: 97.5%;
+    border-bottom: 1px solid #D1D7DC;
+}
+
 .unit-main-column-1-dashboard-header h3 {
     margin-right: 20px;
+    cursor: pointer
+}
+
+.unit-main-column-1-dashboard-header h3:hover {
+    color: #3E4143;
+}
+
+.unit-main-column-1-dashboard-header .selected {
+    color: #28C382;
+}
+
+.unit-main-column-1-dashboard-header .selected:hover {
+    color: #28C382;
 }
 
 .unit-main-column-1-dashboard-content {
@@ -128,8 +148,8 @@
 
 .unit-main-section:hover {
     color: #FFFFFF;
-    background-color: #005AD2;
-    border-bottom: 1px solid #005AD2;
+    background-color: #28C382;
+    border-bottom: 1px solid #28C382;
 }
 
 .unit-main-section-selected {
@@ -148,7 +168,7 @@
 .unit-progress-bar {
     height: 5px;
     width: 0px;
-    background-color: #005AD2;
+    background-color: #28C382;
     transition: 0.3s;
 }
 
@@ -273,4 +293,33 @@
     outline: none;
     cursor: pointer;
     margin-bottom: 10px;
+}
+
+.final-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+}
+
+.final-page h1 {
+    margin-bottom: 20px;
+}
+
+.final-page h2 {
+    margin-bottom: 40px;
+}
+
+.final-page button {
+    padding: 20px;
+    color: #FFFFFF;
+    background-color: #28C382;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.final-page button span {
+    font-size: 20px;
 }

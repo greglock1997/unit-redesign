@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import unitRedesignStyles from '../assets/styles/unit-redesign.module.css';
 
-function Question1() {
-    const [answerInput, setAnswerInput] = useState('');
+function Question1({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const initialAnswer = selectedAnswers[pageId] || '';
+    const [answerInput, setAnswerInput] = useState(initialAnswer);
     const [answerCorrect, setAnswerCorrect] = useState('');
 
     const handleInputChange = (event) => {
@@ -12,10 +13,14 @@ function Question1() {
     const checkAnswer = () => {
         if (answerInput === '165.51') {
             setAnswerCorrect(true);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, true);
         } else if (answerInput === '') {
             setAnswerCorrect('');
         } else {
             setAnswerCorrect(false);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, false);
         };
     };
 
@@ -47,13 +52,26 @@ function Question1() {
     )
 }
 
-function Question2() {
-    const [selectedAnswer, setSelectedAnswer] = useState(null);
+function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const [selectedAnswer, setSelectedAnswer] = useState(selectedAnswers[pageId]);
 
     const correctAnswer = 'kWh';
 
+    useEffect(() => {
+        setSelectedAnswer(selectedAnswers[pageId] || null);
+    }, [pageId, selectedAnswers]);
+
     const handleAnswerClick = (answer) => {
         setSelectedAnswer(answer);
+        handleAnswerSelection(pageId, answer);
+
+        if (answer === correctAnswer) {
+            handleCorrectAnswerSelection(pageId, true);
+            console.log("true");
+        } else {
+            handleCorrectAnswerSelection(pageId, false);
+            console.log("false");
+        }
     }
 
     return (
@@ -104,8 +122,9 @@ function Question2() {
     )
 }
 
-function Question3() {
-    const [answerInput, setAnswerInput] = useState('');
+function Question3({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const initialAnswer = selectedAnswers[pageId] || '';
+    const [answerInput, setAnswerInput] = useState(initialAnswer);
     const [answerCorrect, setAnswerCorrect] = useState('');
 
     const handleInputChange = (event) => {
@@ -115,10 +134,14 @@ function Question3() {
     const checkAnswer = () => {
         if (answerInput === '823') {
             setAnswerCorrect(true);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, true);
         } else if (answerInput === '') {
             setAnswerCorrect('');
         } else {
             setAnswerCorrect(false);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, false);
         };
     };
 
@@ -151,8 +174,9 @@ function Question3() {
     )    
 }
 
-function Question4() {
-    const [answerInput, setAnswerInput] = useState('');
+function Question4({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const initialAnswer = selectedAnswers[pageId] || '';
+    const [answerInput, setAnswerInput] = useState(initialAnswer);
     const [answerCorrect, setAnswerCorrect] = useState('');
 
     const handleInputChange = (event) => {
@@ -162,10 +186,13 @@ function Question4() {
     const checkAnswer = () => {
         if (answerInput === '1584.33') {
             setAnswerCorrect(true);
+            handleAnswerSelection(pageId, answerInput)
+            handleCorrectAnswerSelection(true);
         } else if (answerInput === '') {
             setAnswerCorrect('');
         } else {
             setAnswerCorrect(false);
+            handleCorrectAnswerSelection(false);
         };
     };
 
@@ -197,8 +224,9 @@ function Question4() {
     )    
 }
 
-function Question5() {
-    const [answerInput, setAnswerInput] = useState('');
+function Question5({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const initialAnswer = selectedAnswers[pageId] || '';
+    const [answerInput, setAnswerInput] = useState(initialAnswer);
     const [answerCorrect, setAnswerCorrect] = useState('');
 
     const handleInputChange = (event) => {
@@ -208,10 +236,14 @@ function Question5() {
     const checkAnswer = () => {
         if (answerInput === '1272.75') {
             setAnswerCorrect(true);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(true);
         } else if (answerInput === '') {
             setAnswerCorrect('');
         } else {
             setAnswerCorrect(false);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(false);
         };
     };
 
@@ -244,13 +276,24 @@ function Question5() {
     )    
 }
 
-function Question6() {
+function Question6({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     const correctAnswer = 'Estimated Annual Consumption';
 
+    useEffect(() => {
+        setSelectedAnswer(selectedAnswers[pageId] || null);
+    }, [pageId, selectedAnswers]);
+
     const handleAnswerClick = (answer) => {
         setSelectedAnswer(answer);
+        handleAnswerSelection(pageId, answer);
+
+        if (answer === correctAnswer) {
+            handleCorrectAnswerSelection(pageId, true);
+        } else {
+            handleCorrectAnswerSelection(pageId, false);
+        }
     }
 
     return (
@@ -301,8 +344,9 @@ function Question6() {
     )
 }
 
-function Question7() {
-    const [answerInput, setAnswerInput] = useState('');
+function Question7({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const initialAnswer = selectedAnswers[pageId] || '';
+    const [answerInput, setAnswerInput] = useState(initialAnswer);
     const [answerCorrect, setAnswerCorrect] = useState('');
 
     const handleInputChange = (event) => {
@@ -312,10 +356,14 @@ function Question7() {
     const checkAnswer = () => {
         if (answerInput === '357.4') {
             setAnswerCorrect(true);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, true);
         } else if (answerInput === '') {
             setAnswerCorrect('');
         } else {
             setAnswerCorrect(false);
+            handleAnswerSelection(pageId, answerInput);
+            handleCorrectAnswerSelection(pageId, false);
         };
     };
 
@@ -368,13 +416,24 @@ function Question7() {
     )    
 }
 
-function Question8() {
-    const [selectedAnswer, setSelectedAnswer] = useState(null);
+function Question8({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
+    const [selectedAnswer, setSelectedAnswer] = useState(selectedAnswers[pageId]);
 
     const correctAnswer = '3100kWh';
 
+    useEffect(() => {
+        setSelectedAnswer(selectedAnswers[pageId] || null);
+    }, [pageId, selectedAnswers]);
+
     const handleAnswerClick = (answer) => {
         setSelectedAnswer(answer);
+        handleAnswerSelection(pageId, answer);
+
+        if (answer === correctAnswer) {
+            handleCorrectAnswerSelection(pageId, true);
+        } else {
+            handleCorrectAnswerSelection(pageId, false);
+        }
     }
 
     return (
@@ -429,15 +488,11 @@ function Question8() {
 }
 
 function ProgressBar({pageNumber, pages}) {
-    const completionPercentage = ((pageNumber + 1) / pages.length) * 100;
+    const completionPercentage = (pageNumber / (pages.length - 1)) * 100;
 
     const progressBarStyle = {
         width: `${completionPercentage}%`
     }
-
-    useEffect(() => {
-        console.log('completionPercentage : ', completionPercentage)
-    }, [completionPercentage])
 
     return (
         <div className={unitRedesignStyles['unit-progress-bar-container']}>
@@ -455,8 +510,30 @@ function ProgressBar({pageNumber, pages}) {
 export default function UnitRedesign() {
     const [pageNumber, setPageNumber] = useState(0);
     const [dashboardPageNumber, setDashboardPageNumber] = useState(0);
-
     const [completedPages, setCompletedPages] = useState([]);
+
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
+    const [correctAnswers, setCorrectAnswers] = useState([]);
+    const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
+
+    const handleAnswerSelection = (pageId, answer) => {
+        setSelectedAnswers((prevAnswers) => ({
+            ...prevAnswers,
+            [pageId]: answer,
+        }));
+    };
+
+    const handleCorrectAnswerSelection = (pageId, correct) => {
+        setCorrectAnswers((prevCorrectAnswers) => ({
+            ...prevCorrectAnswers,
+            [pageId]: correct
+        }));
+
+        if (correct) {
+            setNumberOfCorrectAnswers(numberOfCorrectAnswers + 1);
+        }
+    }
+
 
     const handlePageCompletion = (pageId) => {
         if (!completedPages.includes(pageId)) {
@@ -535,10 +612,20 @@ export default function UnitRedesign() {
             </div>
         ),
         (
-            <Question1 /> 
+            <Question1 
+                pageId={1} 
+                selectedAnswers={selectedAnswers} 
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection} 
+            /> 
         ),
         (
-            <Question2 />
+            <Question2
+                pageId={2}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
             <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
@@ -572,13 +659,28 @@ export default function UnitRedesign() {
             </div>
         ),
         (
-            <Question3 />
+            <Question3
+                pageId={3}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
-            <Question4 />
+            <Question4
+                pageId={4}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
-            <Question5 />
+            <Question5
+                pageId={5}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
             <div className={unitRedesignStyles['page']}>
@@ -690,13 +792,35 @@ export default function UnitRedesign() {
             </div>
         ),
         (
-            <Question6 />
+            <Question6
+                pageId={6}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
-            <Question7 />
+            <Question7
+                pageId={7}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
         ),
         (
-            <Question8 />
+            <Question8 
+                pageId={8}
+                selectedAnswers={selectedAnswers}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+            />
+        ),
+        (
+            <div className={unitRedesignStyles['final-page']}>
+                <h1>You've completed this unit! 🎉</h1>
+                <h2>You scored {numberOfCorrectAnswers}/8</h2>
+                <button><b>Click here to go onto the next unit</b></button>
+            </div>
         )
     ];
 
@@ -745,9 +869,24 @@ export default function UnitRedesign() {
                     <ProgressBar pageNumber={pageNumber} pages={pages}/>
                     <div className={unitRedesignStyles['unit-main-column-1-dashboard']}>
                         <div className={unitRedesignStyles['unit-main-column-1-dashboard-header']}>
-                            <h3>Overview</h3>
-                            <h3>Notes</h3>
-                            <h3>Learning Tools</h3>
+                            <h3
+                                className={dashboardPageNumber === 0 && unitRedesignStyles['selected']}
+                                onClick={() => setDashboardPageNumber(0)}
+                            >
+                                Overview
+                            </h3>
+                            <h3
+                                className={dashboardPageNumber === 1 && unitRedesignStyles['selected']}
+                                onClick={() => setDashboardPageNumber(1)}
+                            >
+                                Notes
+                            </h3>
+                            <h3
+                                className={dashboardPageNumber === 2 && unitRedesignStyles['selected']}
+                                onClick={() => setDashboardPageNumber(2)}
+                            >
+                                Learning Tools
+                            </h3>
                         </div>
                         <div className={unitRedesignStyles['unit-main-column-1-dashboard-content']}>
                             {dashboardPages[dashboardPageNumber]}
