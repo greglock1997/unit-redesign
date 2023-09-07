@@ -542,6 +542,14 @@ export default function UnitRedesign() {
         console.log(completedPages);
     }
 
+    const resetPage = () => {
+        setPageNumber(0);
+        setCompletedPages([]);
+        setSelectedAnswers([]);
+        setCorrectAnswers([]);
+        setNumberOfCorrectAnswers(0);
+    }
+
     const pages = [
         (
             <div className={unitRedesignStyles['page']}>
@@ -820,6 +828,12 @@ export default function UnitRedesign() {
                 <h1>You've completed this unit! 🎉</h1>
                 <h2>You scored {numberOfCorrectAnswers}/8</h2>
                 <button><b>Click here to go onto the next unit</b></button>
+                <button
+                    className={unitRedesignStyles['reset-button']}
+                    onClick={resetPage}
+                >
+                    <b>Try again?</b>
+                </button>
             </div>
         )
     ];
