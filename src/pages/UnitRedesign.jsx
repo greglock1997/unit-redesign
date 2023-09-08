@@ -887,6 +887,22 @@ export default function UnitRedesign() {
                                 }}
                             >&#62;</button>
                         )}
+                        {sidebarStatus === "closed" &&(
+                            <button
+                                className={unitRedesignStyles['expand-sidebar-button']}
+                                onClick={() => setSidebarStatus('open')}
+                            >
+                                &#60;
+                            </button>
+                        )}
+                        {dashboardStatus === "closed" &&(
+                            <button
+                                className={unitRedesignStyles['expand-dashboard-button']}
+                                onClick={() => setDashboardStatus('open')}
+                            >
+                                &#62;
+                            </button>
+                        )}
                     </div>
                     {dashboardStatus === 'open' && (
                         <div className={unitRedesignStyles['unit-main-column-1-dashboard']}>

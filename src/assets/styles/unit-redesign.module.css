@@ -62,6 +62,34 @@
     line-height: 1; 
 }
 
+.expand-sidebar-button {
+    position: absolute; 
+    top: 10%; 
+    right: 0px; 
+    transform: translateY(-50%); 
+    color: #FFFFFF;
+    background-color: #28C382;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    line-height: 1; 
+}
+
+.expand-dashboard-button {
+    position: absolute; 
+    bottom: 0; 
+    left: 0px; 
+    transform: translateY(-50%); 
+    color: #FFFFFF;
+    background-color: #28C382;
+    cursor: pointer;
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    line-height: 1; 
+}
+
 .unit-main-column-1-dashboard {
     display: flex;
     flex-direction: column;
