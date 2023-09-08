@@ -553,11 +553,11 @@ export default function UnitRedesign() {
     const pages = [
         (
             <div className={unitRedesignStyles['page']}>
-                <h1>Focus Points</h1>
+                <h1>🔑 Key Points 🔑</h1>
                 <ul>
                     <li>Introduction to energy bills</li>
-                    <li>Calculate my bill</li>
-                    <li>Unit rate and standing charge </li>
+                    <li>Calculating bills</li>
+                    <li>Unit rates and standing charges </li>
                     <li>Measure of gas and electricity units</li>
                     <li>Scenarios</li>
                     <li>How is usage calculated</li>
@@ -569,7 +569,7 @@ export default function UnitRedesign() {
             <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
                 <div>
                     <h1>Calculating an energy bill</h1>
-                    <p>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
+                    <p className={unitRedesignStyles['blue']}>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
                     <ul>
                         <li>Bills reflect P x Q</li>
                         <li>P = Price of energy, set by the energy provider</li>
