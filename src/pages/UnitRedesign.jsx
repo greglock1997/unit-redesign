@@ -516,6 +516,9 @@ export default function UnitRedesign() {
     const [correctAnswers, setCorrectAnswers] = useState([]);
     const [numberOfCorrectAnswers, setNumberOfCorrectAnswers] = useState(0);
 
+    const [dashboardStatus, setDashboardStatus] = useState('open');
+    const [sidebarStatus, setSidebarStatus] = useState('open');
+
     const handleAnswerSelection = (pageId, answer) => {
         setSelectedAnswers((prevAnswers) => ({
             ...prevAnswers,
@@ -553,7 +556,7 @@ export default function UnitRedesign() {
     const pages = [
         (
             <div className={unitRedesignStyles['page']}>
-                <h1>🔑 Key Points 🔑</h1>
+                <h1>Key Points</h1>
                 <ul>
                     <li>Introduction to energy bills</li>
                     <li>Calculating bills</li>
@@ -566,7 +569,7 @@ export default function UnitRedesign() {
             </div>
         ),
         (   
-            <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
+            <div className={unitRedesignStyles['page']}>
                 <div>
                     <h1>Calculating an energy bill</h1>
                     <p className={unitRedesignStyles['blue']}>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
@@ -636,7 +639,7 @@ export default function UnitRedesign() {
             />
         ),
         (
-            <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-row']}`}>
+            <div className={unitRedesignStyles['page']}>
                 <div>
                     <h1>Measure of gas and electricity units</h1>
                     <p>
@@ -862,7 +865,12 @@ export default function UnitRedesign() {
             <div className={unitRedesignStyles['unit-header']}>Outfox The Market Training Portal</div>
             <div className={unitRedesignStyles['unit-main']}>
                 <div className={unitRedesignStyles['unit-main-column-1']}>
-                    <div className={unitRedesignStyles['unit-main-page-container']}>
+                    <ProgressBar pageNumber={pageNumber} pages={pages}/>
+                    <div className={`${
+                        dashboardStatus === 'open'
+                        ? unitRedesignStyles['unit-main-page-container']
+                        : unitRedesignStyles['unit-main-page-container-full-height'] 
+                    }`}>
                         {pages[pageNumber]}
                         {pageNumber > 0 && (
                             <button 
@@ -880,77 +888,86 @@ export default function UnitRedesign() {
                             >&#62;</button>
                         )}
                     </div>
-                    <ProgressBar pageNumber={pageNumber} pages={pages}/>
-                    <div className={unitRedesignStyles['unit-main-column-1-dashboard']}>
-                        <div className={unitRedesignStyles['unit-main-column-1-dashboard-header']}>
-                            <h3
-                                className={dashboardPageNumber === 0 && unitRedesignStyles['selected']}
-                                onClick={() => setDashboardPageNumber(0)}
-                            >
-                                Overview
-                            </h3>
-                            <h3
-                                className={dashboardPageNumber === 1 && unitRedesignStyles['selected']}
-                                onClick={() => setDashboardPageNumber(1)}
-                            >
-                                Notes
-                            </h3>
-                            <h3
-                                className={dashboardPageNumber === 2 && unitRedesignStyles['selected']}
-                                onClick={() => setDashboardPageNumber(2)}
-                            >
-                                Learning Tools
-                            </h3>
+                    {dashboardStatus === 'open' && (
+                        <div className={unitRedesignStyles['unit-main-column-1-dashboard']}>
+                            <div className={unitRedesignStyles['unit-main-column-1-dashboard-header']}>
+                                <h3
+                                    className={dashboardPageNumber === 0 && unitRedesignStyles['selected']}
+                                    onClick={() => setDashboardPageNumber(0)}
+                                >
+                                    Overview
+                                </h3>
+                                <h3
+                                    className={dashboardPageNumber === 1 && unitRedesignStyles['selected']}
+                                    onClick={() => setDashboardPageNumber(1)}
+                                >
+                                    Notes
+                                </h3>
+                                <h3
+                                    className={dashboardPageNumber === 2 && unitRedesignStyles['selected']}
+                                    onClick={() => setDashboardPageNumber(2)}
+                                >
+                                    Learning Tools
+                                </h3>
+                                <h3
+                                    className={dashboardPageNumber === 2 && unitRedesignStyles['selected']}
+                                    onClick={() => setDashboardStatus('closed')}
+                                >
+                                    Close
+                                </h3>
+                            </div>
+                            <div className={unitRedesignStyles['unit-main-column-1-dashboard-content']}>
+                                {dashboardPages[dashboardPageNumber]}
+                            </div>
                         </div>
-                        <div className={unitRedesignStyles['unit-main-column-1-dashboard-content']}>
-                            {dashboardPages[dashboardPageNumber]}
-                        </div>
+                    )}
                     </div>
-                </div>
-                <div className={unitRedesignStyles['unit-main-column-2']}>
-                    <div className={unitRedesignStyles['unit-main-column-2-header']}>
-                        <h2>Course Content</h2>
-                        <h3>&#215;</h3>
-                    </div>
-                    <div className={unitRedesignStyles['unit-main-column-2-content']}>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 1 : Intro</h3>
-                            <h5>21 min</h5>
+                    {sidebarStatus === 'open' && (
+                        <div className={unitRedesignStyles['unit-main-column-2']}>
+                            <div className={unitRedesignStyles['unit-main-column-2-header']}>
+                                <h2>Course Content</h2>
+                                <h3 onClick={() => setSidebarStatus('closed')}>&#215;</h3>
+                            </div>
+                            <div className={unitRedesignStyles['unit-main-column-2-content']}>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 1 : Intro</h3>
+                                    <h5>21 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 2 : The Energy Industry</h3>
+                                    <h5>24 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section-selected']}>
+                                    <h3>Section 3 : Energy Bills</h3>
+                                    <h5>17 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 4 : Energy Price Gaurantee</h3>
+                                    <h5>11 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 5 : Metering</h3>
+                                    <h5>38 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 6 : Customer Vulnerabilities</h3>
+                                    <h5>15 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 7 : Debt And Payment Plans</h3>
+                                    <h5>11 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 8 : Fuel Direct</h3>
+                                    <h5>27 min</h5>
+                                </div>
+                                <div className={unitRedesignStyles['unit-main-section']}>
+                                    <h3>Section 9 : Complaints</h3>
+                                    <h5>25 min</h5>
+                                </div>
+                            </div>
                         </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 2 : The Energy Industry</h3>
-                            <h5>24 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section-selected']}>
-                            <h3>Section 3 : Energy Bills</h3>
-                            <h5>17 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 4 : Energy Price Gaurantee</h3>
-                            <h5>11 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 5 : Metering</h3>
-                            <h5>38 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 6 : Customer Vulnerabilities</h3>
-                            <h5>15 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 7 : Debt And Payment Plans</h3>
-                            <h5>11 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 8 : Fuel Direct</h3>
-                            <h5>27 min</h5>
-                        </div>
-                        <div className={unitRedesignStyles['unit-main-section']}>
-                            <h3>Section 9 : Complaints</h3>
-                            <h5>25 min</h5>
-                        </div>
-                    </div>
-                </div>
+                    )}
             </div>
         </div>
     )
