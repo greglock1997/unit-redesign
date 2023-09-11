@@ -199,12 +199,16 @@ function Question4({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
     return (
         <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 4</h1>
-            <p>
-                This customer has also been receiving energy from their supplier for one year. They have
-                consumed 6500kWh of electricity and 13050kWh of gas. This supplier's standing charge is 22.1p/day
-                for electricty and 23.4p/day for gas. The unit rate for electricity is 16.8p/kWh and 2.5p/kWh for
-                gas. All rates include the 5% VAT rate. Calculate how much this customer spent in one year.
-            </p>
+            <div className={unitRedesignStyles['page-row']}>
+                <img src="https://images.unsplash.com/photo-1625980344922-a4df108b2bd0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80" alt="" />
+                <ul>
+                    <li>A customer has been receiving energy for <span>1 year</span></li>
+                    <li>They have consumed <span>6500kWh</span> of electricty</li>
+                    <li>The standing charge is  <span>22.1p/day</span></li>
+                    <li>The unit rate for electricity is <span>16.8p/kWh</span></li>
+                    <li>All rates include the <span>5%</span> VAT tax rate</li>
+                </ul>
+            </div>
             <input 
                 type="text" 
                 placeholder='Answer'
@@ -570,7 +574,7 @@ export default function UnitRedesign() {
         ),
         (   
             <div className={unitRedesignStyles['page']}>
-                <div>
+                <div className={unitRedesignStyles['page-column']}>
                     <h1>Calculating an energy bill</h1>
                     <p className={unitRedesignStyles['blue']}>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
                     <ul>
@@ -643,9 +647,7 @@ export default function UnitRedesign() {
                 <div>
                     <h1>Measure of gas and electricity units</h1>
                     <p>
-                        <b>Electrictity</b> meters record energy consumed in kilowatt hours while <b>gas</b> meters
-                        record the volume of the gas consumed in cubic feet in the case of older meters or cubic meters
-                        for newer models.
+                        Electrictity meters record the amount of energy used in homes
                     </p>
                     <p>
                         The calculations used to generate gas bills are prescribed in <b><i>The Gas (Calculation of Thermal Energy)
@@ -846,7 +848,7 @@ export default function UnitRedesign() {
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur rhoncus nibh magna, eu semper erat hendrerit at. Vivamus eget dignissim diam, at suscipit nisl. Praesent egestas ullamcorper lobortis. Praesent eu porttitor mauris, ut semper nulla. Duis vel malesuada augue. Phasellus leo justo, tristique quis massa congue, congue semper nisl. Aenean posuere eros a nulla malesuada, a laoreet leo porta. Integer sed est orci. Morbi aliquam accumsan tempor. Nam facilisis tortor nibh, non ullamcorper leo sollicitudin et. Sed ut cursus velit. Aenean tempor felis tellus, ac porttitor sem molestie vitae. Duis sit amet rhoncus augue, sed condimentum justo. Donec eget venenatis lectus, id maximus nisl. Vivamus rutrum nulla eget ex commodo ullamcorper. Quisque maximus nulla nec neque tincidunt, accumsan sagittis dui ultricies.</p>
         ),
         (
-            <textarea name="" id="" cols="150" rows="10"></textarea>
+            <textarea name="" id="" cols="150" rows="5"></textarea>
         )
     ]
 
@@ -862,7 +864,7 @@ export default function UnitRedesign() {
 
     return (
         <div className={unitRedesignStyles['unit-container']}>
-            <div className={unitRedesignStyles['unit-header']}>Outfox The Market Training Portal</div>
+            <div className={unitRedesignStyles['unit-header']}>ZOG Solutions Training Portal</div>
             <div className={unitRedesignStyles['unit-main']}>
                 <div className={unitRedesignStyles['unit-main-column-1']}>
                     <ProgressBar pageNumber={pageNumber} pages={pages}/>
@@ -876,7 +878,7 @@ export default function UnitRedesign() {
                             <button 
                                 className={unitRedesignStyles['unit-main-page-left-button']}
                                 onClick={prevPage}    
-                            >&#60;</button>
+                            ><i class="fa-solid fa-arrow-left"></i></button>
                         )}
                         {pageNumber < (pages.length - 1) && (
                             <button 
@@ -885,14 +887,14 @@ export default function UnitRedesign() {
                                     handlePageCompletion(pageNumber);
                                     nextPage();
                                 }}
-                            >&#62;</button>
+                            ><i class="fa-solid fa-arrow-right"></i></button>
                         )}
                         {sidebarStatus === "closed" &&(
                             <button
                                 className={unitRedesignStyles['expand-sidebar-button']}
                                 onClick={() => setSidebarStatus('open')}
                             >
-                                &#60;
+                                <i class="fa-solid fa-angle-left"></i>
                             </button>
                         )}
                         {dashboardStatus === "closed" &&(
@@ -900,7 +902,7 @@ export default function UnitRedesign() {
                                 className={unitRedesignStyles['expand-dashboard-button']}
                                 onClick={() => setDashboardStatus('open')}
                             >
-                                &#62;
+                                <i class="fa-solid fa-angle-right"></i>
                             </button>
                         )}
                     </div>
@@ -926,7 +928,7 @@ export default function UnitRedesign() {
                                     Learning Tools
                                 </h3>
                                 <h3
-                                    className={dashboardPageNumber === 2 && unitRedesignStyles['selected']}
+                                    className={dashboardPageNumber === 3 && unitRedesignStyles['selected']}
                                     onClick={() => setDashboardStatus('closed')}
                                 >
                                     Close
@@ -942,7 +944,7 @@ export default function UnitRedesign() {
                         <div className={unitRedesignStyles['unit-main-column-2']}>
                             <div className={unitRedesignStyles['unit-main-column-2-header']}>
                                 <h2>Course Content</h2>
-                                <h3 onClick={() => setSidebarStatus('closed')}>&#215;</h3>
+                                <h3 onClick={() => setSidebarStatus('closed')}><i class="fa-solid fa-delete-left"></i></h3>
                             </div>
                             <div className={unitRedesignStyles['unit-main-column-2-content']}>
                                 <div className={unitRedesignStyles['unit-main-section']}>
