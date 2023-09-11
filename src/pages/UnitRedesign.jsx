@@ -85,6 +85,7 @@ function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                         : ''
                 }`}
                 onClick={() => handleAnswerClick('mWh')}
+                disabled={selectedAnswer ? true : false}
             >
                 mWh
             </button>
@@ -95,6 +96,7 @@ function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                         : ''
                 }`}
                 onClick={() => handleAnswerClick('kWh')}
+                disabled={selectedAnswer ? true : false}
             >
                 kWh
             </button>
@@ -105,6 +107,7 @@ function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                         : ''
                 }`}
                 onClick={() => handleAnswerClick('gWh')}
+                disabled={selectedAnswer ? true : false}
             >
                 gWh
             </button>
@@ -115,9 +118,19 @@ function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                         : ''
                 }`}
                 onClick={() => handleAnswerClick('Wh')}
+                disabled={selectedAnswer ? true : false}
             >
                 Wh
             </button>
+            
+            {selectedAnswer && (
+                <button 
+                    className="try-again-button"
+                    onClick={() => setSelectedAnswer('')}
+                >
+                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                </button>
+            )}
         </div>
     )
 }
@@ -574,7 +587,7 @@ export default function UnitRedesign() {
         ),
         (   
             <div className={unitRedesignStyles['page']}>
-                <div className={unitRedesignStyles['page-column']}>
+                <div>
                     <h1>Calculating an energy bill</h1>
                     <p className={unitRedesignStyles['blue']}>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
                     <ul>

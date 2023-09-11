@@ -195,7 +195,7 @@
 .unit-progress-bar-container {
     height: 5px;
     width: 100%;
-    background-color: #414A4C;
+    background-color: #3E4143;
 }
 
 .unit-progress-bar {
@@ -245,11 +245,6 @@
     max-width: 100%;
 }
 
-.page-column {
-    display: flex;
-    flex-direction: column;
-}
-
 .page-row {
     display: flex;
     flex-direction: row;
@@ -268,7 +263,7 @@
     height: 100%;
 }
 
-.page-row ul span {
+span {
     color: #28C382;
 }
 
@@ -278,6 +273,7 @@
     margin-right: 40px;
 }
 
+/*
 .page h1 {
     font-size: 60px;
     font-weight: 900;
@@ -289,6 +285,17 @@
     background: -webkit-linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF0F7B", endColorstr="#F89B29", GradientType=1 );
     border-radius: 5px;
+}
+*/
+
+
+.page h1 {
+    font-size: 60px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    padding: 40px;
+    background-color: #28C382;
+    border-radius: 5px;    
 }
 
 .page p {
@@ -315,6 +322,8 @@
 
 .page h3 {
     width: 600px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .page input {
