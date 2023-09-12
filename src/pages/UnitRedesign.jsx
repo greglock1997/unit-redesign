@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { MultipleChoiceQuestion, InputQuestion } from '../components/pageComponents';
 import unitRedesignStyles from '../assets/styles/unit-redesign.module.css';
 
 function Question1({ pageId, selectedAnswers, handleAnswerSelection, handleCorrectAnswerSelection }) {
@@ -586,6 +587,41 @@ export default function UnitRedesign() {
                     <li>Estimated meter reads</li>
                 </ul>
             </div>
+        ),
+        (
+            <MultipleChoiceQuestion
+                title="Question 3"
+                question="2 + 1 = ?" 
+                correctAnswer={3}
+                pageId="1"
+                selectedAnswers={selectedAnswers}
+                answers={[1, 2, 3, 4]}
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+                unitRedesignStyles={unitRedesignStyles}
+
+            />
+        ),
+        (
+            <InputQuestion
+                title="Question 4"
+                correctAnswer={"823"}
+                selectedAnswers={selectedAnswers}
+                scenario={
+                    [
+                        "A customer has been receiving energy for 91 days",
+                        "They have consumed 783kWh of electricty",
+                        "The standing charge is 27p/day",
+                        "The unit rate for electricity is 18p/kWh",
+                        "The 5% VAT tax rate is not included"
+                    ]
+                } 
+                pageId={2}
+                img="https://images.unsplash.com/photo-1413882353314-73389f63b6fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                handleAnswerSelection={handleAnswerSelection}
+                handleCorrectAnswerSelection={handleCorrectAnswerSelection}
+                unitRedesignStyles={unitRedesignStyles}
+            />
         ),
         (   
             <div className={unitRedesignStyles['page']}>
