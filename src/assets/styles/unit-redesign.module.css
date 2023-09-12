@@ -45,6 +45,23 @@
     padding: 20px;
     line-height: 1;
     vertical-align: middle;
+    transition: 0.3s;
+}
+
+.unit-main-page-left-button:hover {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    color: #28C382;
+    background-color: #2D2F31;
+    cursor: pointer;
+    font-size: 60px;
+    border: none;
+    padding: 20px;
+    line-height: 1;
+    vertical-align: middle;
+    transition: 0.3s;
 }
 
 .unit-main-page-right-button {
@@ -53,6 +70,21 @@
     right: 0px; 
     transform: translateY(-50%); 
     color: #FFFFFF;
+    background-color: #2D2F31;
+    cursor: pointer;
+    font-size: 60px;
+    border: none;
+    padding: 20px;
+    line-height: 1;
+    transition: 0.3s; 
+}
+
+.unit-main-page-right-button:hover {
+    position: absolute; 
+    top: 50%; 
+    right: 0px; 
+    transform: translateY(-50%); 
+    color: #28C382;
     background-color: #2D2F31;
     cursor: pointer;
     font-size: 60px;
@@ -248,7 +280,7 @@
 .page-row {
     display: flex;
     flex-direction: row;
-    margin-bottom: 200px;
+    margin-bottom: 60px;
     background-color: #2D2F31;
 }
 
@@ -261,6 +293,8 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    margin-bottom: 0 !important;
+    list-style-position: outside !important;
 }
 
 span {
@@ -271,23 +305,8 @@ span {
     max-height: 400px;
     max-width: 400px;
     margin-right: 40px;
+    margin-bottom: 0 !important;
 }
-
-/*
-.page h1 {
-    font-size: 60px;
-    font-weight: 900;
-    margin-bottom: 60px;
-    padding: 40px;
-    background: hsla(333, 100%, 53%, 1);
-    background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-    background: -moz-linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-    background: -webkit-linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#FF0F7B", endColorstr="#F89B29", GradientType=1 );
-    border-radius: 5px;
-}
-*/
-
 
 .page h1 {
     font-size: 60px;
@@ -318,6 +337,12 @@ span {
     list-style-position: inside;
     background-color: #2D2F31;
     padding: 20px;
+    margin-bottom: 60px;
+}
+
+.page img {
+    width: 600px;
+    margin-bottom: 60px;
 }
 
 .page h3 {
@@ -330,6 +355,14 @@ span {
     padding: 20px;
     width: 400px;
     margin-bottom: 20px;
+    border: none;
+}
+
+.page input:focus {
+    padding: 20px;
+    width: 400px;
+    margin-bottom: 20px;
+    outline: 1px solid #28C382;
 }
 
 .page table {

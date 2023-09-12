@@ -27,12 +27,17 @@ function Question1({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
     return (
         <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 1</h1>
-            <p>
-                Imagine a customer has been with us for 91 days and our current standing charge is
-                27p/day. The customer has also used 783kwH of energy during this time, our unit rate
-                is 18p/kWh. Calculate the customer's total cost (in £) during this time and enter it into the
-                box below.
-            </p>
+            <div className={unitRedesignStyles['page-row']}>
+                <img src="https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" />
+                <ul>
+                    <li>A customer has been receiving energy for <span>91 days</span></li>
+                    <li>They have consumed <span>783kWh</span> of electricty</li>
+                    <li>The standing charge is  <span>27p/day</span></li>
+                    <li>The unit rate for electricity is <span>18p/kWh</span></li>
+                    <li>The <span>5%</span> VAT tax rate is not included</li>
+                </ul>
+            </div>
+            <p>Calculate this user's <span>total cost</span> and enter it into the box below</p>
             <input 
                 type="text" 
                 placeholder='Answer'
@@ -122,15 +127,6 @@ function Question2({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
             >
                 Wh
             </button>
-            
-            {selectedAnswer && (
-                <button 
-                    className="try-again-button"
-                    onClick={() => setSelectedAnswer('')}
-                >
-                    <i class="fa-solid fa-arrow-rotate-left"></i>
-                </button>
-            )}
         </div>
     )
 }
@@ -161,13 +157,17 @@ function Question3({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
     return (
         <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>Question 3</h1>
-            <p>
-                In this scenario the customer has been receiving their energy from this supplier
-                for one year. The customer has consumed 5000kWh of electricity during this time.
-                The standing charge of the supplier is 20p/day and the unit rate is 15p/kWh. The 5%
-                VAT rate is already included in these rates. Calulate the customer's total cost for
-                the year in £ and enter it into the box below.
-            </p>
+            <div className={unitRedesignStyles['page-row']}>
+                <img src="https://images.unsplash.com/photo-1413882353314-73389f63b6fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" />
+                <ul>
+                    <li>A customer has been receiving energy for <span>1 year</span></li>
+                    <li>They have consumed <span>5000kWh</span> of electricty</li>
+                    <li>The standing charge is  <span>20p/day</span></li>
+                    <li>The unit rate for electricity is <span>15p/kWh</span></li>
+                    <li>All rates include the <span>5%</span> VAT tax rate</li>
+                </ul>
+            </div>
+            <p>Calculate this user's <span>total cost</span> and enter it into the box below</p>
             <input 
                 type="text" 
                 placeholder='Answer'
@@ -222,6 +222,7 @@ function Question4({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                     <li>All rates include the <span>5%</span> VAT tax rate</li>
                 </ul>
             </div>
+            <p>Calculate this user's <span>total cost</span> and enter it into the box below</p>
             <input 
                 type="text" 
                 placeholder='Answer'
@@ -324,6 +325,7 @@ function Question6({ pageId, selectedAnswers, handleAnswerSelection, handleCorre
                         : ''
                 }`}
                 onClick={() => handleAnswerClick('Energy Assessment Certification')}
+                disabled={selectedAnswer ? true : false}
             >
                 Energy Assessment Certification
             </button>
@@ -587,17 +589,14 @@ export default function UnitRedesign() {
         ),
         (   
             <div className={unitRedesignStyles['page']}>
-                <div>
-                    <h1>Calculating an energy bill</h1>
-                    <p className={unitRedesignStyles['blue']}>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
-                    <ul>
-                        <li>Bills reflect P x Q</li>
-                        <li>P = Price of energy, set by the energy provider</li>
-                        <li>Q = Quantity of energy used, set by the customer</li>
-                        <li>VAT for energy is charged at 5%, not 20%</li>
-                    </ul>
-                    <b><h3>Let's explore this customer's bill...</h3></b>
-                </div>
+                <h1>Calculating an energy bill</h1>
+                <p>Customers may not always understand their bill, remember that as experts it is our responsibility to explain it to them.</p>
+                <ul>
+                    <li>Bills reflect <span>P x Q</span></li>
+                    <li><span>P = Price</span> of energy, set by the energy provider</li>
+                    <li><span>Q = Quantity</span> of energy used, set by the customer</li>
+                    <li><span>VAT</span> for energy is charged at <span>5%</span>, not <span>20%</span></li>
+                </ul>
                 <img src="src\assets\images\Picture1.png" alt="" />
             </div>
         ),
@@ -619,8 +618,8 @@ export default function UnitRedesign() {
         (
             <div className={unitRedesignStyles['page']}>
                 <h1>Standing charge</h1>
-                <p>A <b>standing charge</b> is a fixed daily amount that you must pay no matter how much energy you use.
-                It even applies to properties that are empty for part of the year, like a holiday home. The charge coverd the cost
+                <p>A is a fixed daily amount that you must pay no matter how much energy you use.
+                It even applies to properties that are empty for part of the year, like a holiday home. The charge covers the cost
                 of supplying the property with gas and electricity. It can thought of as a line rental for a mobile phone, but with energy instead.
                 These costs include : 
                 </p>
@@ -636,7 +635,6 @@ export default function UnitRedesign() {
                     For example, a customer has been with a supplier for 30 days and the supplier's standing charge
                     is 21p/day. Using the Price x Quantity formula, <br /> <br /> <b>21p x 30days = 630p = £63</b>
                 </p>
-                <p>Now let's try a quick test</p>
             </div>
         ),
         (
@@ -657,7 +655,6 @@ export default function UnitRedesign() {
         ),
         (
             <div className={unitRedesignStyles['page']}>
-                <div>
                     <h1>Measure of gas and electricity units</h1>
                     <p>
                         Electrictity meters record the amount of energy used in homes
@@ -680,7 +677,6 @@ export default function UnitRedesign() {
                             <li>= Number of kilowatt hours</li>
                         </ul>
                     </b>
-                </div>
                 <img src="src\assets\images\Picture2.png" alt="" />
             </div>
         ),
