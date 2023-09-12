@@ -85,9 +85,9 @@ export function InputQuestion(props) {
     const unitRedesignStyles = props.unitRedesignStyles;
 
     useEffect(() => {
-        if (initialAnswer === '823') {
+        if (initialAnswer === props.correctAnswer) {
             setAnswerCorrect(true);
-        } else {
+        } else if (initialAnswer !== ''){
             setAnswerCorrect(false);
         }
     }, [initialAnswer, props.pageId]);
@@ -97,7 +97,7 @@ export function InputQuestion(props) {
     };
 
     const checkAnswer = () => {
-        if (answerInput === '823') {
+        if (answerInput === props.correctAnswer) {
             setAnswerCorrect(true);
             handleAnswerSelection(props.pageId, answerInput);
             handleCorrectAnswerSelection(props.pageId, true);
