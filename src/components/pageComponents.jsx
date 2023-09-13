@@ -1,5 +1,46 @@
 import React, { useState, useEffect } from 'react';
 
+export function Page(props) {
+    const unitRedesignStyles = props.unitRedesignStyles;
+
+    return (
+        <div className={unitRedesignStyles['page']}>
+            {props.title && (
+                <h1>{props.title}</h1>
+            )}
+            {props.paragraph && (
+                <p>{props.paragraph}</p>
+            )}
+            {props.list && (
+                <ul>
+                    {props.list.map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}            
+                </ul>
+            )}
+            {props.table && (
+                <table>
+                    <tr>
+                        {props.table.headers.map((header, index) => (
+                            <th key={index}>{header}</th>
+                        ))}
+                    </tr>
+                    {props.table.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((cell, cellIndex) => (
+                                <td key={cellIndex}>{cell}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </table>
+            )}
+            {props.img && (
+                <img src={props.img}/>
+            )}
+        </div>
+    )
+}
+
 export function MultipleChoiceQuestion(props) {
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
@@ -31,7 +72,7 @@ export function MultipleChoiceQuestion(props) {
                 className={`${
                     selectedAnswer === props.answers[0]
                         ? (selectedAnswer === correctAnswer ? unitRedesignStyles['button-correct'] : unitRedesignStyles['button-incorrect'])
-                        : ''
+                        : unitRedesignStyles['button-neutral']
                 }`}
                 onClick={() => handleAnswerClick(props.answers[0])}
                 disabled={selectedAnswer ? true : false}
@@ -113,25 +154,44 @@ export function InputQuestion(props) {
     return (
         <div className={`${unitRedesignStyles['page']} ${unitRedesignStyles['page-input']}`}>
             <h1>{props.title}</h1>
-            <div className={unitRedesignStyles['page-row']}>
-                <img src={props.img} alt="" />
-                <ul>
-                    {props.scenario.map((line, index) => (
-                        <li key={index}>{line}</li>
+            {props.scenario && (
+                <div className={unitRedesignStyles['page-row']}>
+                    <img src={props.img} alt="" />
+                    <ul>
+                        {props.scenario.map((line, index) => (
+                            <li key={index}>{line}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            {props.table && (
+                <table>
+                    <tr>
+                        {props.table.headers.map((header, index) => (
+                            <th key={index}>{header}</th>
+                        ))}
+                    </tr>
+                    {props.table.rows.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {row.map((cell, cellIndex) => (
+                                <td key={cellIndex}>{cell}</td>
+                            ))}
+                        </tr>
                     ))}
-                </ul>
-            </div>
-            <p>Calculate this user's <span>total cost</span> and enter it into the box below</p>
+                </table>
+            )}
+            <p>{props.question}</p>
             <input 
                 type="text" 
                 placeholder='Answer'
                 value={answerInput}
                 onChange={handleInputChange}
+                disabled={initialAnswer ? true : false}
             />
             {answerCorrect === true ? (
                 <button className={unitRedesignStyles['button-correct']}>Correct!</button>
             ) : answerCorrect === false ? (
-                <button className={unitRedesignStyles['button-incorrect']} onClick={checkAnswer}>Incorrect, try again</button>
+                <button className={unitRedesignStyles['button-incorrect']} onClick={checkAnswer}>Incorrect</button>
             ) : (
                 <button className={unitRedesignStyles['button-neutral']} onClick={checkAnswer}>
                     Check Answer

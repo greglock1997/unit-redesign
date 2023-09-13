@@ -438,11 +438,22 @@ span {
     margin-bottom: 10px;
 }
 
+.page-multiple-answer button:disabled {
+    padding: 20px;
+    width: 400px;
+    color: #585C60;
+    background-color: #757C7D;
+    border: none;
+    outline: none;
+    cursor: auto;
+    margin-bottom: 10px;
+}
+
 .page-multiple-answer .button-correct {
     padding: 20px;
     width: 400px;
-    color: #FFFFFF;
-    background-color: #28C382;
+    color: #FFFFFF !important;
+    background-color: #28C382 !important;
     border: none;
     outline: none;
     cursor: pointer;
@@ -452,8 +463,8 @@ span {
 .page-multiple-answer .button-incorrect {
     padding: 20px;
     width: 400px;
-    color: #FFFFFF;
-    background-color: #B51C15;
+    color: #FFFFFF !important;
+    background-color: #B51C15 !important;
     border: none;
     outline: none;
     cursor: pointer;
